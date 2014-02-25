@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DatabaseStoreContainer">
+          <EntitySet Name="AgeGroup" EntityType="Database.Store.AgeGroup" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Database.Store.City" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Database.Store.Class" store:Type="Tables" />
+          <EntitySet Name="Function" EntityType="Database.Store.Function" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Database.Store.Gender" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Database.Store.Member" store:Type="Tables" />
+          <EntitySet Name="MemberFunction" EntityType="Database.Store.MemberFunction" store:Type="Tables" />
+          <AssociationSet Name="FK_Member_City" Association="Database.Store.FK_Member_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Class" Association="Database.Store.FK_Member_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Class2" Association="Database.Store.FK_Member_Class2">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Gender" Association="Database.Store.FK_Member_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberFunction_Function" Association="Database.Store.FK_MemberFunction_Function">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="MemberFunction" EntitySet="MemberFunction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberFunction_Member" Association="Database.Store.FK_MemberFunction_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="MemberFunction" EntitySet="MemberFunction" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AgeGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AgeFrom" Type="int" />
+          <Property Name="AgeTo" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ForeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="GenderID" Type="int" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="TelefonNumber1" Type="nvarchar" MaxLength="20" />
+          <Property Name="TelefonNumber2" Type="nvarchar" MaxLength="20" />
+          <Property Name="TelefonNumber3" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="20" />
+          <Property Name="HealthInsuranceNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="DateOfClubEntry" Type="datetime" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="Class2ID" Type="int" />
+          <Property Name="Note" Type="ntext" />
+        </EntityType>
+        <EntityType Name="MemberFunction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="FunctionID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Member_City">
+          <End Role="City" Type="Database.Store.City" Multiplicity="0..1" />
+          <End Role="Member" Type="Database.Store.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Class">
+          <End Role="Class" Type="Database.Store.Class" Multiplicity="0..1" />
+          <End Role="Member" Type="Database.Store.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Class2">
+          <End Role="Class" Type="Database.Store.Class" Multiplicity="0..1" />
+          <End Role="Member" Type="Database.Store.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="Class2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Gender">
+          <End Role="Gender" Type="Database.Store.Gender" Multiplicity="0..1" />
+          <End Role="Member" Type="Database.Store.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberFunction_Function">
+          <End Role="Function" Type="Database.Store.Function" Multiplicity="0..1" />
+          <End Role="MemberFunction" Type="Database.Store.MemberFunction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberFunction">
+              <PropertyRef Name="FunctionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberFunction_Member">
+          <End Role="Member" Type="Database.Store.Member" Multiplicity="0..1" />
+          <End Role="MemberFunction" Type="Database.Store.MemberFunction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberFunction">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MitgliederverwaltungTestdatenDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgeGroups" EntityType="Database.AgeGroup" />
+          <EntitySet Name="Cities" EntityType="Database.City" />
+          <EntitySet Name="Classes" EntityType="Database.Class" />
+          <EntitySet Name="Functions" EntityType="Database.Function" />
+          <EntitySet Name="Genders" EntityType="Database.Gender" />
+          <EntitySet Name="Members" EntityType="Database.Member" />
+          <EntitySet Name="MemberFunctions" EntityType="Database.MemberFunction" />
+          <AssociationSet Name="FK_Member_City" Association="Database.FK_Member_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Class" Association="Database.FK_Member_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Class2" Association="Database.FK_Member_Class2">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberFunction_Function" Association="Database.FK_MemberFunction_Function">
+            <End Role="Function" EntitySet="Functions" />
+            <End Role="MemberFunction" EntitySet="MemberFunctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Gender" Association="Database.FK_Member_Gender">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberFunction_Member" Association="Database.FK_MemberFunction_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="MemberFunction" EntitySet="MemberFunctions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AgeGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgeFrom" Type="Int32" />
+          <Property Name="AgeTo" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Members" Relationship="Database.FK_Member_City" FromRole="City" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Members" Relationship="Database.FK_Member_Class" FromRole="Class" ToRole="Member" />
+          <NavigationProperty Name="Members1" Relationship="Database.FK_Member_Class2" FromRole="Class" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="MemberFunctions" Relationship="Database.FK_MemberFunction_Function" FromRole="Function" ToRole="MemberFunction" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Members" Relationship="Database.FK_Member_Gender" FromRole="Gender" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ForeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="GenderID" Type="Int32" />
+          <Property Name="Street" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PostCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="TelefonNumber1" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TelefonNumber2" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TelefonNumber3" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="EMail" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="HealthInsuranceNumber" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfClubEntry" Type="DateTime" Precision="3" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="Class2ID" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="City" Relationship="Database.FK_Member_City" FromRole="Member" ToRole="City" />
+          <NavigationProperty Name="Class" Relationship="Database.FK_Member_Class" FromRole="Member" ToRole="Class" />
+          <NavigationProperty Name="Class1" Relationship="Database.FK_Member_Class2" FromRole="Member" ToRole="Class" />
+          <NavigationProperty Name="Gender" Relationship="Database.FK_Member_Gender" FromRole="Member" ToRole="Gender" />
+          <NavigationProperty Name="MemberFunctions" Relationship="Database.FK_MemberFunction_Member" FromRole="Member" ToRole="MemberFunction" />
+        </EntityType>
+        <EntityType Name="MemberFunction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="FunctionID" Type="Int32" />
+          <NavigationProperty Name="Function" Relationship="Database.FK_MemberFunction_Function" FromRole="MemberFunction" ToRole="Function" />
+          <NavigationProperty Name="Member" Relationship="Database.FK_MemberFunction_Member" FromRole="MemberFunction" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_Member_City">
+          <End Role="City" Type="Database.City" Multiplicity="0..1" />
+          <End Role="Member" Type="Database.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Class">
+          <End Role="Class" Type="Database.Class" Multiplicity="0..1" />
+          <End Role="Member" Type="Database.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Class2">
+          <End Role="Class" Type="Database.Class" Multiplicity="0..1" />
+          <End Role="Member" Type="Database.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="Class2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberFunction_Function">
+          <End Role="Function" Type="Database.Function" Multiplicity="0..1" />
+          <End Role="MemberFunction" Type="Database.MemberFunction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberFunction">
+              <PropertyRef Name="FunctionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Gender">
+          <End Role="Gender" Type="Database.Gender" Multiplicity="0..1" />
+          <End Role="Member" Type="Database.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberFunction_Member">
+          <End Role="Member" Type="Database.Member" Multiplicity="0..1" />
+          <End Role="MemberFunction" Type="Database.MemberFunction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MemberFunction">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseStoreContainer" CdmEntityContainer="MitgliederverwaltungTestdatenDbContext">
+          <EntitySetMapping Name="AgeGroups">
+            <EntityTypeMapping TypeName="Database.AgeGroup">
+              <MappingFragment StoreEntitySet="AgeGroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AgeFrom" ColumnName="AgeFrom" />
+                <ScalarProperty Name="AgeTo" ColumnName="AgeTo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="Database.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="Database.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Functions">
+            <EntityTypeMapping TypeName="Database.Function">
+              <MappingFragment StoreEntitySet="Function">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="Database.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="Database.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ForeName" ColumnName="ForeName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="TelefonNumber1" ColumnName="TelefonNumber1" />
+                <ScalarProperty Name="TelefonNumber2" ColumnName="TelefonNumber2" />
+                <ScalarProperty Name="TelefonNumber3" ColumnName="TelefonNumber3" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="HealthInsuranceNumber" ColumnName="HealthInsuranceNumber" />
+                <ScalarProperty Name="DateOfClubEntry" ColumnName="DateOfClubEntry" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="Class2ID" ColumnName="Class2ID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberFunctions">
+            <EntityTypeMapping TypeName="Database.MemberFunction">
+              <MappingFragment StoreEntitySet="MemberFunction">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="FunctionID" ColumnName="FunctionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

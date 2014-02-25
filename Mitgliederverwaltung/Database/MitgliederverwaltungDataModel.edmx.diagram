@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91111d8a25544d229d877b98a5f09bb7" Name="Diagramm1">
+        <EntityTypeShape EntityType="Database.AgeGroup" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database.City" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database.Class" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database.Function" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database.Gender" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database.Member" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database.MemberFunction" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="Database.FK_Member_City" ManuallyRouted="false" />
+        <AssociationConnector Association="Database.FK_Member_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="Database.FK_Member_Class2" ManuallyRouted="false" />
+        <AssociationConnector Association="Database.FK_MemberFunction_Function" ManuallyRouted="false" />
+        <AssociationConnector Association="Database.FK_Member_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Database.FK_MemberFunction_Member" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

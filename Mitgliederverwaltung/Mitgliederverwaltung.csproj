@@ -191,7 +191,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
     <Content Include="Database\MitgliederverwaltungTestdaten.sdf" />
   </ItemGroup>
   <ItemGroup>

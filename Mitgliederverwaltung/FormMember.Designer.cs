@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMember));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -35,21 +36,22 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMember = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.memberBindingSource = new System.Windows.Forms.BindingSource();
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridMember = new DevExpress.XtraGrid.GridControl();
             this.viewMember = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colForeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDateOfBirth = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.deDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colGenderID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.leGenders = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.genderBindingSource = new System.Windows.Forms.BindingSource();
+            this.genderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colStreet = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPostCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCityID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.leCities = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.cityBindingSource = new System.Windows.Forms.BindingSource();
+            this.cityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colTelefonNumber1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTelefonNumber2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTelefonNumber3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,7 +60,7 @@
             this.colDateOfClubEntry = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colClassID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.leClasses = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.classBindingSource = new System.Windows.Forms.BindingSource();
+            this.classBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colClass2ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNote = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -68,13 +70,15 @@
             this.colMemberFunctions = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFunctions = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ccbeFunctions = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
-            this.functionBindingSource = new System.Windows.Forms.BindingSource();
-            this.deDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.functionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.naviGridMember = new DevExpress.XtraEditors.ControlNavigator();
+            this.memberFunctionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridMember)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewMember)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leGenders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.genderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leCities)).BeginInit();
@@ -83,8 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.classBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccbeFunctions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.functionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deDate.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberFunctionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -188,6 +191,7 @@
             this.colFunctions});
             this.viewMember.GridControl = this.gridMember;
             this.viewMember.Name = "viewMember";
+            this.viewMember.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.viewMember_RowCellClick);
             this.viewMember.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.viewMember_CustomUnboundColumnData);
             // 
             // colID
@@ -218,6 +222,17 @@
             this.colDateOfBirth.Name = "colDateOfBirth";
             this.colDateOfBirth.Visible = true;
             this.colDateOfBirth.VisibleIndex = 3;
+            // 
+            // deDate
+            // 
+            this.deDate.AutoHeight = false;
+            this.deDate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deDate.Name = "deDate";
+            this.deDate.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.deDate.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.Repository_CustomDisplayText);
             // 
             // colGenderID
             // 
@@ -430,17 +445,6 @@
             // 
             this.functionBindingSource.DataSource = typeof(Mitgliederverwaltung.Database.Function);
             // 
-            // deDate
-            // 
-            this.deDate.AutoHeight = false;
-            this.deDate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDate.Name = "deDate";
-            this.deDate.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.deDate.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.Repository_CustomDisplayText);
-            // 
             // naviGridMember
             // 
             this.naviGridMember.Location = new System.Drawing.Point(0, 471);
@@ -455,6 +459,10 @@
             this.naviGridMember.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             this.naviGridMember.ToolTipTitle = "Bla";
             this.naviGridMember.ButtonClick += new DevExpress.XtraEditors.NavigatorButtonClickEventHandler(this.naviGridMember_ButtonClick);
+            // 
+            // memberFunctionBindingSource
+            // 
+            this.memberFunctionBindingSource.DataSource = typeof(Mitgliederverwaltung.Database.MemberFunction);
             // 
             // FormMember
             // 
@@ -472,6 +480,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridMember)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewMember)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deDate.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leGenders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.genderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leCities)).EndInit();
@@ -480,8 +490,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.classBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccbeFunctions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.functionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deDate.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberFunctionBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -531,6 +540,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colGender;
         private DevExpress.XtraGrid.Columns.GridColumn colMemberFunctions;
         private DevExpress.XtraGrid.Columns.GridColumn colFunctions;
+        private System.Windows.Forms.BindingSource memberFunctionBindingSource;
     }
 }
 

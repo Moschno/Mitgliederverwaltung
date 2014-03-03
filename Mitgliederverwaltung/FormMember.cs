@@ -24,7 +24,6 @@ namespace Mitgliederverwaltung {
             cityBindingSource.DataSource = dbContext.Cities.ToList<City>();
             classBindingSource.DataSource = dbContext.Classes.ToList<Class>();
             functionBindingSource.DataSource = dbContext.Functions.ToList<Function>();
-            memberFunctionBindingSource.DataSource = dbContext.MemberFunctions.ToList<MemberFunction>();
 
             cityBindingSource.Insert(0, new City { Id = -1, Name = "<Neue Stadt anlegen..>" });
             classBindingSource.Insert(0, new Class { ID = -1, Description = "<Neue Klasse anlegen..>" });
@@ -69,43 +68,47 @@ namespace Mitgliederverwaltung {
             }
         }
 
-        private void naviGridMember_ButtonClick(object sender, DevExpress.XtraEditors.NavigatorButtonClickEventArgs e) {
-            if (e.Button == naviGridMember.Buttons.EndEdit) {
-                e.Handled = true;
+        private void ribbonCoreData_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            if (e.Item == btnSaveChanges) {
+                UpdateLocalDbContextMemberFunctionsObjects();
                 SaveDataToDb();
-                UpdateNaviButtonState(e.Button);
             }
-            else if (e.Button == naviGridMember.Buttons.CancelEdit) {
-                e.Handled = true;
+            else if (e.Item == btnCancelEdit) {
                 dbContext = new MitgliederverwaltungTestdatenDbContext();
                 memberBindingSource.DataSource = dbContext.Members.ToList<Member>();
-                UpdateNaviButtonState(e.Button);
             }
-            else if (e.Button == naviGridMember.Buttons.Append) {
-                e.Handled = true;
+            else if (e.Item == btnAddMember) {
                 colFunctionsCellValues.Add("" as object);
                 dbContext.Members.Local.Add(new Member());
                 memberBindingSource.DataSource = dbContext.Members.Local.ToList<Member>();
-                UpdateNaviButtonState(e.Button);
             }
-            else if (e.Button == naviGridMember.Buttons.Remove) {
-                e.Handled = true;
+            else if (e.Item == btnDeleteMember) {
                 DialogResult result = XtraMessageBox.Show("Möchtest du das Mitglied endgültig löschen?", "Bestätigung", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == System.Windows.Forms.DialogResult.OK) {
                     Member member;
                     if (GetMemberFromFocusedRow(out member)) {
-                        //todo: colFunctionsCellValue-Object entfernen
+                        colFunctionsCellValues.RemoveAt(dbContext.Members.Local.IndexOf(member));
+                        RemoveMemberFunctionsFromLocalDbContext(member);
                         dbContext.Members.Local.Remove(member);
                         memberBindingSource.DataSource = dbContext.Members.Local.ToList<Member>();
                         SaveDataToDb();
-                        UpdateNaviButtonState(e.Button);
                     }
                 }
             }
         }
 
+        private void RemoveMemberFunctionsFromLocalDbContext(Member member) {
+            List<MemberFunction> memberFunctions = new List<MemberFunction>();
+            foreach (MemberFunction function in member.MemberFunctions) {
+                memberFunctions.Add(function);
+            }
+            foreach (MemberFunction function in memberFunctions) {
+                dbContext.MemberFunctions.Local.Remove(function);
+            }
+        }
+
         private bool GetMemberFromFocusedRow(out Member member) {
-            int? memberID = (int?)viewMember.GetFocusedRowCellValue(colID);
+            int? memberID = (int?)view.GetFocusedRowCellValue(colID);
             if (memberID != null) {
                 member = (from a in dbContext.Members.Local.ToList<Member>()
                           where a.ID == memberID
@@ -119,33 +122,19 @@ namespace Mitgliederverwaltung {
             return false;
         }
 
-        private void UpdateNaviButtonState(NavigatorButtonBase clickedButton) {
-            if (clickedButton == naviGridMember.Buttons.EndEdit ||
-                clickedButton == naviGridMember.Buttons.Remove) {
-                naviGridMember.Buttons.Append.Enabled = true;
-            }
-            else if (clickedButton == naviGridMember.Buttons.CancelEdit) {
-                naviGridMember.Buttons.Append.Enabled = true;
-            }
-            else if (clickedButton == naviGridMember.Buttons.Append) {
-                naviGridMember.Buttons.Append.Enabled = false;
-            }
-        }
-        private void UpdateNaviButtonState() {
-            naviGridMember.Buttons.EndEdit.Enabled = true;
-            naviGridMember.Buttons.CancelEdit.Enabled = true;
-            naviGridMember.Buttons.Append.Enabled = true;
-        }
-
-
         private void SaveDataToDb() {
-            viewMember.CloseEditor();
+            view.CloseEditor();
+            dbContext.SaveChanges();
+        }
+
+        private void UpdateLocalDbContextMemberFunctionsObjects() {
+            view.CloseEditor();
 
             //Funktionen eines jeden Mitglieds in Datenbank abspeichern
             for (int i = 0; i < dbContext.Members.Local.Count; i++) {
                 //Um dieses Mitglied geht es aktuell
                 Member member = dbContext.Members.Local[i];
-                
+
                 //Bisherige Funktionen des Mitglieds in Liste schreiben
                 List<int> oldFunctionIds = new List<int>();
                 foreach (MemberFunction function in member.MemberFunctions) {
@@ -219,24 +208,11 @@ namespace Mitgliederverwaltung {
                         };
                         dbContext.MemberFunctions.Local.Add(function);
                     }
-                } 
-            }
-            memberFunctionBindingSource.DataSource = dbContext.MemberFunctions.Local.ToList<MemberFunction>();
-
-            dbContext.SaveChanges();
-        }
-
-        private void beFunctions_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e) {
-            Member member;
-            if (GetMemberFromFocusedRow(out member)) {
-                FormMemberFunctions formMemberFunctions = new FormMemberFunctions(member, dbContext);
-                formMemberFunctions.ShowInTaskbar = false;
-                formMemberFunctions.ShowIcon = false;
-                formMemberFunctions.Show(this);
+                }
             }
         }
 
-        private void viewMember_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e) {
+        private void view_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e) {
             if (e.Column == colFunctions) {
                 if (e.IsSetData) {
                     colFunctionsCellValues[e.ListSourceRowIndex] = e.Value;
@@ -273,9 +249,6 @@ namespace Mitgliederverwaltung {
                     e.DisplayText = "<Bitte Funktion(en) wählen>";
                 }
             }
-        }
-
-        private void viewMember_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e) {
         }
     }
 }

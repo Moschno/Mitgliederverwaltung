@@ -70,20 +70,22 @@ namespace Mitgliederverwaltung {
 
         private void ribbonCoreData_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
             if (e.Item == btnSaveChanges) {
-                UpdateLocalDbContextMemberFunctionsObjects();
-                SaveDataToDb();
+                SaveMemberData();
+                ShowSaveDialog();
             }
             else if (e.Item == btnCancelEdit) {
                 dbContext = new MitgliederverwaltungTestdatenDbContext();
                 memberBindingSource.DataSource = dbContext.Members.ToList<Member>();
             }
             else if (e.Item == btnAddMember) {
-                colFunctionsCellValues.Add("" as object);
-                dbContext.Members.Local.Add(new Member());
-                memberBindingSource.DataSource = dbContext.Members.Local.ToList<Member>();
+                if (dbContext.Members.Local.Count == dbContext.Members.Count()) {
+                    colFunctionsCellValues.Add("" as object);
+                    dbContext.Members.Local.Add(new Member());
+                    memberBindingSource.DataSource = dbContext.Members.Local.ToList<Member>();
+                }
             }
             else if (e.Item == btnDeleteMember) {
-                DialogResult result = XtraMessageBox.Show("Möchtest du das Mitglied endgültig löschen?", "Bestätigung", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult result = XtraMessageBox.Show("Möchten Sie das Mitglied endgültig löschen?", "Bestätigung", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == System.Windows.Forms.DialogResult.OK) {
                     Member member;
                     if (GetMemberFromFocusedRow(out member)) {
@@ -91,10 +93,24 @@ namespace Mitgliederverwaltung {
                         RemoveMemberFunctionsFromLocalDbContext(member);
                         dbContext.Members.Local.Remove(member);
                         memberBindingSource.DataSource = dbContext.Members.Local.ToList<Member>();
-                        SaveDataToDb();
+                        SaveMemberData();
                     }
                 }
             }
+        }
+
+        private void ShowSaveDialog() {
+            XtraMessageBox.Show(
+                "Daten gespeichert.",
+                "Hinweis",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
+        private void SaveMemberData() {
+            UpdateLocalDbContextMemberFunctionsObjects();
+            dbContext.SaveChanges();
         }
 
         private void RemoveMemberFunctionsFromLocalDbContext(Member member) {
@@ -108,7 +124,7 @@ namespace Mitgliederverwaltung {
         }
 
         private bool GetMemberFromFocusedRow(out Member member) {
-            int? memberID = (int?)view.GetFocusedRowCellValue(colID);
+            int? memberID = (int?)viewCoreData.GetFocusedRowCellValue(colID);
             if (memberID != null) {
                 member = (from a in dbContext.Members.Local.ToList<Member>()
                           where a.ID == memberID
@@ -122,13 +138,8 @@ namespace Mitgliederverwaltung {
             return false;
         }
 
-        private void SaveDataToDb() {
-            view.CloseEditor();
-            dbContext.SaveChanges();
-        }
-
         private void UpdateLocalDbContextMemberFunctionsObjects() {
-            view.CloseEditor();
+            viewCoreData.CloseEditor();
 
             //Funktionen eines jeden Mitglieds in Datenbank abspeichern
             for (int i = 0; i < dbContext.Members.Local.Count; i++) {
@@ -247,6 +258,26 @@ namespace Mitgliederverwaltung {
             else if (sender == ccbeFunctions) {
                 if (string.IsNullOrEmpty(e.DisplayText)) {
                     e.DisplayText = "<Bitte Funktion(en) wählen>";
+                }
+            }
+        }
+
+        private void FormMember_FormClosing(object sender, FormClosingEventArgs e) {
+            System.Data.Entity.EntityState state = dbContext.Entry(dbContext.Members.Local[0]).State;
+            foreach (Member member in dbContext.Members.Local) {
+                if (dbContext.Entry(dbContext.Members.Local[0]).State != System.Data.Entity.EntityState.Unchanged) {
+                    DialogResult result = XtraMessageBox.Show(
+                        "Einige Änderungen wurden nicht gespeichert. Möchten Sie sie speichern?",
+                        "Hinweis",
+                        MessageBoxButtons.YesNoCancel,
+                        MessageBoxIcon.Information
+                    );
+                    if (result == DialogResult.Yes) {
+                        SaveMemberData();
+                    }
+                    else if (result == DialogResult.Abort) {
+                        e.Cancel = true;
+                    }
                 }
             }
         }

@@ -36,6 +36,12 @@
             this.btnDeleteMember = new DevExpress.XtraBars.BarButtonItem();
             this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnSaveChanges = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAddCity = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDeleteCity = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAddClass = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDeleteClass = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAddFunction = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDeleteFunction = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategoryCoreData = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPageCoreData = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAddMember = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -44,9 +50,16 @@
             this.ribbonPageGroupSaveChanges = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCategoryAdministration = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPageCities = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroupAddCity = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupDeleteCity = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageClasses = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroupAddClass = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupDeleteClass = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroupAddFunction = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupDeleteFunction = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.gridControlCoreData = new DevExpress.XtraGrid.GridControl();
             this.viewCoreData = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -86,13 +99,21 @@
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colNote = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.memoEditNote = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.ribbonPageFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.gridControlAdministration = new DevExpress.XtraGrid.GridControl();
+            this.gridViewAdministration = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIdAdmin = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMembers = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.memberFunctionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlCoreData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewCoreData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leGenders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.genderBindingSource)).BeginInit();
@@ -105,6 +126,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ccbeFunctions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.functionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAdministration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewAdministration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberFunctionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -117,9 +142,15 @@
             this.btnAddMember,
             this.btnDeleteMember,
             this.btnCancelEdit,
-            this.btnSaveChanges});
+            this.btnSaveChanges,
+            this.btnAddCity,
+            this.btnDeleteCity,
+            this.btnAddClass,
+            this.btnDeleteClass,
+            this.btnAddFunction,
+            this.btnDeleteFunction});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 5;
+            this.ribbonControl.MaxItemId = 11;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategoryCoreData,
@@ -128,6 +159,7 @@
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.Size = new System.Drawing.Size(934, 152);
+            this.ribbonControl.SelectedPageChanging += new DevExpress.XtraBars.Ribbon.RibbonPageChangingEventHandler(this.ribbonControl_SelectedPageChanging);
             // 
             // sharedImageCollection
             // 
@@ -151,7 +183,7 @@
             this.btnAddMember.ImageIndex = 3;
             this.btnAddMember.Name = "btnAddMember";
             this.btnAddMember.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnAddMember.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbonCoreData_ItemClick);
+            this.btnAddMember.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
             // 
             // btnDeleteMember
             // 
@@ -159,7 +191,7 @@
             this.btnDeleteMember.ImageIndex = 4;
             this.btnDeleteMember.Name = "btnDeleteMember";
             this.btnDeleteMember.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnDeleteMember.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbonCoreData_ItemClick);
+            this.btnDeleteMember.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
             // 
             // btnCancelEdit
             // 
@@ -167,7 +199,7 @@
             this.btnCancelEdit.ImageIndex = 5;
             this.btnCancelEdit.Name = "btnCancelEdit";
             this.btnCancelEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnCancelEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbonCoreData_ItemClick);
+            this.btnCancelEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
             // 
             // btnSaveChanges
             // 
@@ -175,7 +207,55 @@
             this.btnSaveChanges.ImageIndex = 6;
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnSaveChanges.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbonCoreData_ItemClick);
+            this.btnSaveChanges.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
+            // 
+            // btnAddCity
+            // 
+            this.btnAddCity.Id = 5;
+            this.btnAddCity.ImageIndex = 3;
+            this.btnAddCity.Name = "btnAddCity";
+            this.btnAddCity.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnAddCity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
+            // 
+            // btnDeleteCity
+            // 
+            this.btnDeleteCity.Id = 6;
+            this.btnDeleteCity.ImageIndex = 4;
+            this.btnDeleteCity.Name = "btnDeleteCity";
+            this.btnDeleteCity.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnDeleteCity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
+            // 
+            // btnAddClass
+            // 
+            this.btnAddClass.Id = 7;
+            this.btnAddClass.ImageIndex = 3;
+            this.btnAddClass.Name = "btnAddClass";
+            this.btnAddClass.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnAddClass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
+            // 
+            // btnDeleteClass
+            // 
+            this.btnDeleteClass.Id = 8;
+            this.btnDeleteClass.ImageIndex = 4;
+            this.btnDeleteClass.Name = "btnDeleteClass";
+            this.btnDeleteClass.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnDeleteClass.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
+            // 
+            // btnAddFunction
+            // 
+            this.btnAddFunction.Id = 9;
+            this.btnAddFunction.ImageIndex = 3;
+            this.btnAddFunction.Name = "btnAddFunction";
+            this.btnAddFunction.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnAddFunction.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
+            // 
+            // btnDeleteFunction
+            // 
+            this.btnDeleteFunction.Id = 10;
+            this.btnDeleteFunction.ImageIndex = 4;
+            this.btnDeleteFunction.Name = "btnDeleteFunction";
+            this.btnDeleteFunction.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnDeleteFunction.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
             // 
             // ribbonPageCategoryCoreData
             // 
@@ -236,39 +316,97 @@
             // 
             // ribbonPageCities
             // 
+            this.ribbonPageCities.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroupAddCity,
+            this.ribbonPageGroupDeleteCity});
             this.ribbonPageCities.ImageIndex = 0;
             this.ribbonPageCities.Name = "ribbonPageCities";
             this.ribbonPageCities.Text = "Städte";
             // 
+            // ribbonPageGroupAddCity
+            // 
+            this.ribbonPageGroupAddCity.ItemLinks.Add(this.btnAddCity);
+            this.ribbonPageGroupAddCity.Name = "ribbonPageGroupAddCity";
+            this.ribbonPageGroupAddCity.ShowCaptionButton = false;
+            this.ribbonPageGroupAddCity.Text = "Stadt hinzufügen";
+            // 
+            // ribbonPageGroupDeleteCity
+            // 
+            this.ribbonPageGroupDeleteCity.ItemLinks.Add(this.btnDeleteCity);
+            this.ribbonPageGroupDeleteCity.Name = "ribbonPageGroupDeleteCity";
+            this.ribbonPageGroupDeleteCity.ShowCaptionButton = false;
+            this.ribbonPageGroupDeleteCity.Text = "Stadt löschen";
+            // 
             // ribbonPageClasses
             // 
+            this.ribbonPageClasses.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroupAddClass,
+            this.ribbonPageGroupDeleteClass});
             this.ribbonPageClasses.ImageIndex = 2;
             this.ribbonPageClasses.Name = "ribbonPageClasses";
             this.ribbonPageClasses.Text = "Klassen";
+            // 
+            // ribbonPageGroupAddClass
+            // 
+            this.ribbonPageGroupAddClass.ItemLinks.Add(this.btnAddClass);
+            this.ribbonPageGroupAddClass.Name = "ribbonPageGroupAddClass";
+            this.ribbonPageGroupAddClass.ShowCaptionButton = false;
+            this.ribbonPageGroupAddClass.Text = "Klasse hinzufügen";
+            // 
+            // ribbonPageGroupDeleteClass
+            // 
+            this.ribbonPageGroupDeleteClass.ItemLinks.Add(this.btnDeleteClass);
+            this.ribbonPageGroupDeleteClass.Name = "ribbonPageGroupDeleteClass";
+            this.ribbonPageGroupDeleteClass.ShowCaptionButton = false;
+            this.ribbonPageGroupDeleteClass.Text = "Klasse löschen";
+            // 
+            // ribbonPageFunctions
+            // 
+            this.ribbonPageFunctions.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroupAddFunction,
+            this.ribbonPageGroupDeleteFunction});
+            this.ribbonPageFunctions.ImageIndex = 7;
+            this.ribbonPageFunctions.Name = "ribbonPageFunctions";
+            this.ribbonPageFunctions.Text = "Funktionen";
+            // 
+            // ribbonPageGroupAddFunction
+            // 
+            this.ribbonPageGroupAddFunction.ItemLinks.Add(this.btnAddFunction);
+            this.ribbonPageGroupAddFunction.Name = "ribbonPageGroupAddFunction";
+            this.ribbonPageGroupAddFunction.ShowCaptionButton = false;
+            this.ribbonPageGroupAddFunction.Text = "Funktion hinzufügen";
+            // 
+            // ribbonPageGroupDeleteFunction
+            // 
+            this.ribbonPageGroupDeleteFunction.ItemLinks.Add(this.btnDeleteFunction);
+            this.ribbonPageGroupDeleteFunction.Name = "ribbonPageGroupDeleteFunction";
+            this.ribbonPageGroupDeleteFunction.ShowCaptionButton = false;
+            this.ribbonPageGroupDeleteFunction.Text = "Funktion löschen";
             // 
             // memberBindingSource
             // 
             this.memberBindingSource.DataSource = typeof(Mitgliederverwaltung.Database.Member);
             // 
-            // gridControl
+            // gridControlCoreData
             // 
-            this.gridControl.DataSource = this.memberBindingSource;
-            this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 152);
-            this.gridControl.MainView = this.viewCoreData;
-            this.gridControl.MenuManager = this.ribbonControl;
-            this.gridControl.Name = "gridControl";
-            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.gridControlCoreData.DataSource = this.memberBindingSource;
+            this.gridControlCoreData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlCoreData.Location = new System.Drawing.Point(0, 152);
+            this.gridControlCoreData.MainView = this.viewCoreData;
+            this.gridControlCoreData.MenuManager = this.ribbonControl;
+            this.gridControlCoreData.Name = "gridControlCoreData";
+            this.gridControlCoreData.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.leGenders,
             this.leCities,
             this.leClasses,
             this.deDate,
             this.ccbeFunctions,
             this.memoEditNote});
-            this.gridControl.Size = new System.Drawing.Size(934, 336);
-            this.gridControl.TabIndex = 2;
-            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.viewCoreData});
+            this.gridControlCoreData.Size = new System.Drawing.Size(934, 336);
+            this.gridControlCoreData.TabIndex = 2;
+            this.gridControlCoreData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.viewCoreData,
+            this.gridView1});
             // 
             // viewCoreData
             // 
@@ -302,7 +440,7 @@
             this.colGender,
             this.colMemberFunctions,
             this.colFunctions});
-            this.viewCoreData.GridControl = this.gridControl;
+            this.viewCoreData.GridControl = this.gridControlCoreData;
             this.viewCoreData.Name = "viewCoreData";
             this.viewCoreData.OptionsView.ColumnAutoWidth = true;
             this.viewCoreData.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.view_CustomUnboundColumnData);
@@ -470,7 +608,6 @@
             this.leCities.Name = "leCities";
             this.leCities.NullText = "";
             this.leCities.ValueMember = "Id";
-            this.leCities.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.leCities_EditValueChanging);
             this.leCities.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.Repository_CustomDisplayText);
             // 
             // cityBindingSource
@@ -558,17 +695,12 @@
             this.leClasses.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.leClasses.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 34, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "Number", 47, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description", "Description", 63, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Members", "Members", 53, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Members1", "Members1", 59, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description", "Description", 63, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
             this.leClasses.DataSource = this.classBindingSource;
-            this.leClasses.DisplayMember = "Number";
+            this.leClasses.DisplayMember = "Description";
             this.leClasses.Name = "leClasses";
             this.leClasses.NullText = "";
             this.leClasses.ValueMember = "ID";
-            this.leClasses.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.leClasses_EditValueChanging);
             this.leClasses.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.Repository_CustomDisplayText);
             // 
             // classBindingSource
@@ -611,6 +743,7 @@
             this.ccbeFunctions.DataSource = this.functionBindingSource;
             this.ccbeFunctions.DisplayMember = "Description";
             this.ccbeFunctions.Name = "ccbeFunctions";
+            this.ccbeFunctions.SelectAllItemCaption = "(Alle)";
             this.ccbeFunctions.ValueMember = "ID";
             this.ccbeFunctions.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.Repository_CustomDisplayText);
             // 
@@ -651,15 +784,75 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.memoEditNote.Name = "memoEditNote";
             // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControlCoreData;
+            this.gridView1.Name = "gridView1";
+            // 
             // defaultLookAndFeel
             // 
             this.defaultLookAndFeel.LookAndFeel.SkinName = "Office 2013 Dark Gray";
             // 
-            // ribbonPageFunctions
+            // gridControlAdministration
             // 
-            this.ribbonPageFunctions.ImageIndex = 7;
-            this.ribbonPageFunctions.Name = "ribbonPageFunctions";
-            this.ribbonPageFunctions.Text = "Funktionen";
+            this.gridControlAdministration.DataSource = this.classBindingSource;
+            this.gridControlAdministration.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlAdministration.Location = new System.Drawing.Point(0, 152);
+            this.gridControlAdministration.MainView = this.gridViewAdministration;
+            this.gridControlAdministration.MenuManager = this.ribbonControl;
+            this.gridControlAdministration.Name = "gridControlAdministration";
+            this.gridControlAdministration.Size = new System.Drawing.Size(934, 336);
+            this.gridControlAdministration.TabIndex = 4;
+            this.gridControlAdministration.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewAdministration});
+            // 
+            // gridViewAdministration
+            // 
+            this.gridViewAdministration.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colIdAdmin,
+            this.colName,
+            this.colMembers});
+            this.gridViewAdministration.GridControl = this.gridControlAdministration;
+            this.gridViewAdministration.GroupPanelText = " ";
+            this.gridViewAdministration.Name = "gridViewAdministration";
+            // 
+            // colIdAdmin
+            // 
+            this.colIdAdmin.FieldName = "Id";
+            this.colIdAdmin.Name = "colIdAdmin";
+            this.colIdAdmin.OptionsColumn.AllowEdit = false;
+            this.colIdAdmin.OptionsColumn.ReadOnly = true;
+            // 
+            // colName
+            // 
+            this.colName.Name = "colName";
+            this.colName.OptionsColumn.AllowEdit = false;
+            this.colName.OptionsColumn.ReadOnly = true;
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 0;
+            // 
+            // colMembers
+            // 
+            this.colMembers.FieldName = "Members";
+            this.colMembers.Name = "colMembers";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnAddMember);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.ShowCaptionButton = false;
+            this.ribbonPageGroup3.Text = "Mitglied hinzufügen";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnDeleteMember);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.ShowCaptionButton = false;
+            this.ribbonPageGroup4.Text = "Mitglied löschen";
+            // 
+            // memberFunctionBindingSource
+            // 
+            this.memberFunctionBindingSource.DataSource = typeof(Mitgliederverwaltung.Database.MemberFunction);
             // 
             // FormMember
             // 
@@ -667,7 +860,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 488);
-            this.Controls.Add(this.gridControl);
+            this.Controls.Add(this.gridControlAdministration);
+            this.Controls.Add(this.gridControlCoreData);
             this.Controls.Add(this.ribbonControl);
             this.HtmlImages = this.sharedImageCollection.ImageSource;
             this.Name = "FormMember";
@@ -678,7 +872,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlCoreData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewCoreData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leGenders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.genderBindingSource)).EndInit();
@@ -691,6 +885,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ccbeFunctions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.functionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAdministration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewAdministration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberFunctionBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -700,7 +898,7 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
         private System.Windows.Forms.BindingSource memberBindingSource;
-        private DevExpress.XtraGrid.GridControl gridControl;
+        private DevExpress.XtraGrid.GridControl gridControlCoreData;
         private System.Windows.Forms.BindingSource genderBindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit leGenders;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit leCities;
@@ -756,6 +954,27 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageFunctions;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridControlAdministration;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewAdministration;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdAdmin;
+        private DevExpress.XtraGrid.Columns.GridColumn colName;
+        private DevExpress.XtraGrid.Columns.GridColumn colMembers;
+        private DevExpress.XtraBars.BarButtonItem btnAddCity;
+        private DevExpress.XtraBars.BarButtonItem btnDeleteCity;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAddCity;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupDeleteCity;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarButtonItem btnAddClass;
+        private DevExpress.XtraBars.BarButtonItem btnDeleteClass;
+        private DevExpress.XtraBars.BarButtonItem btnAddFunction;
+        private DevExpress.XtraBars.BarButtonItem btnDeleteFunction;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAddClass;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupDeleteClass;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAddFunction;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupDeleteFunction;
+        private System.Windows.Forms.BindingSource memberFunctionBindingSource;
     }
 }
 

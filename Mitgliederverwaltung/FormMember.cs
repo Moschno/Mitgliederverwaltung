@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Mitgliederverwaltung.Database;
 using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Mitgliederverwaltung {
     public partial class FormMember : DevExpress.XtraBars.Ribbon.RibbonForm {
@@ -338,8 +339,55 @@ namespace Mitgliederverwaltung {
                     else {
                         e.Value = colFunctionsCellValues[e.ListSourceRowIndex];
                     }
-                } 
+                }
+                else if (e.Column == colAgeGroup) {
+                    e.Value = GetAgeGroup(e.ListSourceRowIndex);
+                }
             }
+        }
+
+        private string GetAgeGroup(int listSourceRowIndex) {
+            DateTime dateOfBirth = Convert.ToDateTime(viewCoreData.GetListSourceRowCellValue(listSourceRowIndex, colDateOfBirth));
+            int age = GetAgeFromDate(dateOfBirth);
+            if (age >= 0 && age <= 6) {
+                return "AK I - bis 6 Jahre";
+            }
+            else if (age >= 7 && age <= 14) {
+                return "AK II - 7-14 Jahre";
+            }
+            else if (age >= 15 && age <= 18) {
+                return "AK III - 15-18 Jahre";
+            }
+            else if (age >= 19 && age <= 26) {
+                return "AK IV - 19-26 Jahre";
+            }
+            else if (age >= 27 && age <= 40) {
+                return "AK V - 27-40 Jahre";
+            }
+            else if (age >= 41 && age <= 50) {
+                return "AK VI - 41-50 Jahre";
+            }
+            else if (age >= 51 && age <= 60) {
+                return "AK VII - 51-60 Jahre";
+            }
+            else if (age >= 61) {
+                return "AK VIII - über 60 Jahre";
+            }
+            else {
+                return "";
+            }
+            
+        }
+
+        private int GetAgeFromDate(DateTime birthday) {
+            if (birthday == DateTime.MinValue ||
+                birthday.Year >= DateTime.Now.Year &&
+                birthday.Month >= DateTime.Now.Month &&
+                birthday.Day > DateTime.Now.Day) {
+                    return -1;
+            }
+	        int age = ((DateTime.Now.Year - birthday.Year) * 372 + (DateTime.Now.Month - birthday.Month) * 31 + (DateTime.Now.Day - birthday.Day)) / 372;
+            return age; 
         }
 
         private void Repository_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e) {

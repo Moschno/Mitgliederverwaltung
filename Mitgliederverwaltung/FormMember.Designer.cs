@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMember));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.sharedImageCollection = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.sharedImageCollection = new DevExpress.Utils.SharedImageCollection();
             this.btnAddMember = new DevExpress.XtraBars.BarButtonItem();
             this.btnDeleteMember = new DevExpress.XtraBars.BarButtonItem();
             this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -58,7 +57,7 @@
             this.ribbonPageFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAddFunction = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupDeleteFunction = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.memberBindingSource = new System.Windows.Forms.BindingSource();
             this.gridControlCoreData = new DevExpress.XtraGrid.GridControl();
             this.viewCoreData = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -72,14 +71,14 @@
             this.colMemberFunctions = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colGenderID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.leGenders = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.genderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.genderBindingSource = new System.Windows.Forms.BindingSource();
             this.colDateOfBirth = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.deDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colStreet = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colCityID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.leCities = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.cityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cityBindingSource = new System.Windows.Forms.BindingSource();
             this.colPostCode = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colTelefonNumber1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -89,18 +88,19 @@
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colClassID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.leClasses = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.classBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.classBindingSource = new System.Windows.Forms.BindingSource();
             this.colClass2ID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colAgeGroup = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colHealthInsuranceNumber = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colFunctions = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ccbeFunctions = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
-            this.functionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.functionBindingSource = new System.Windows.Forms.BindingSource();
             this.colDateOfClubEntry = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colNote = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.memoEditNote = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.gridControlAdministration = new DevExpress.XtraGrid.GridControl();
             this.gridViewAdministration = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIdAdmin = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -108,7 +108,7 @@
             this.colMembers = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.memberFunctionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.memberFunctionBindingSource = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection.ImageSource)).BeginInit();
@@ -158,7 +158,7 @@
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(934, 152);
+            this.ribbonControl.Size = new System.Drawing.Size(1138, 152);
             this.ribbonControl.SelectedPageChanging += new DevExpress.XtraBars.Ribbon.RibbonPageChangingEventHandler(this.ribbonControl_SelectedPageChanging);
             // 
             // sharedImageCollection
@@ -402,7 +402,7 @@
             this.deDate,
             this.ccbeFunctions,
             this.memoEditNote});
-            this.gridControlCoreData.Size = new System.Drawing.Size(934, 336);
+            this.gridControlCoreData.Size = new System.Drawing.Size(1138, 336);
             this.gridControlCoreData.TabIndex = 2;
             this.gridControlCoreData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewCoreData,
@@ -439,8 +439,11 @@
             this.colClass1,
             this.colGender,
             this.colMemberFunctions,
-            this.colFunctions});
+            this.colFunctions,
+            this.colAgeGroup});
             this.viewCoreData.GridControl = this.gridControlCoreData;
+            this.viewCoreData.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", null, "")});
             this.viewCoreData.Name = "viewCoreData";
             this.viewCoreData.OptionsView.ColumnAutoWidth = true;
             this.viewCoreData.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.view_CustomUnboundColumnData);
@@ -460,7 +463,7 @@
             this.gridBand1.Columns.Add(this.colDateOfBirth);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 167;
+            this.gridBand1.Width = 187;
             // 
             // colID
             // 
@@ -474,7 +477,7 @@
             this.colLastName.FieldName = "LastName";
             this.colLastName.Name = "colLastName";
             this.colLastName.Visible = true;
-            this.colLastName.Width = 83;
+            this.colLastName.Width = 92;
             // 
             // colForeName
             // 
@@ -482,7 +485,7 @@
             this.colForeName.FieldName = "ForeName";
             this.colForeName.Name = "colForeName";
             this.colForeName.Visible = true;
-            this.colForeName.Width = 84;
+            this.colForeName.Width = 95;
             // 
             // colCity
             // 
@@ -522,7 +525,7 @@
             this.colGenderID.Name = "colGenderID";
             this.colGenderID.RowIndex = 1;
             this.colGenderID.Visible = true;
-            this.colGenderID.Width = 83;
+            this.colGenderID.Width = 92;
             // 
             // leGenders
             // 
@@ -553,7 +556,7 @@
             this.colDateOfBirth.Name = "colDateOfBirth";
             this.colDateOfBirth.RowIndex = 1;
             this.colDateOfBirth.Visible = true;
-            this.colDateOfBirth.Width = 84;
+            this.colDateOfBirth.Width = 95;
             // 
             // deDate
             // 
@@ -574,7 +577,7 @@
             this.gridBand2.Columns.Add(this.colPostCode);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 179;
+            this.gridBand2.Width = 200;
             // 
             // colStreet
             // 
@@ -582,7 +585,7 @@
             this.colStreet.FieldName = "Street";
             this.colStreet.Name = "colStreet";
             this.colStreet.Visible = true;
-            this.colStreet.Width = 179;
+            this.colStreet.Width = 200;
             // 
             // colCityID
             // 
@@ -592,7 +595,7 @@
             this.colCityID.Name = "colCityID";
             this.colCityID.RowIndex = 1;
             this.colCityID.Visible = true;
-            this.colCityID.Width = 122;
+            this.colCityID.Width = 136;
             // 
             // leCities
             // 
@@ -621,7 +624,7 @@
             this.colPostCode.Name = "colPostCode";
             this.colPostCode.RowIndex = 1;
             this.colPostCode.Visible = true;
-            this.colPostCode.Width = 57;
+            this.colPostCode.Width = 64;
             // 
             // gridBand3
             // 
@@ -632,7 +635,7 @@
             this.gridBand3.Columns.Add(this.colEMail);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 194;
+            this.gridBand3.Width = 217;
             // 
             // colTelefonNumber1
             // 
@@ -640,7 +643,7 @@
             this.colTelefonNumber1.FieldName = "TelefonNumber1";
             this.colTelefonNumber1.Name = "colTelefonNumber1";
             this.colTelefonNumber1.Visible = true;
-            this.colTelefonNumber1.Width = 95;
+            this.colTelefonNumber1.Width = 106;
             // 
             // colTelefonNumber2
             // 
@@ -648,7 +651,7 @@
             this.colTelefonNumber2.FieldName = "TelefonNumber2";
             this.colTelefonNumber2.Name = "colTelefonNumber2";
             this.colTelefonNumber2.Visible = true;
-            this.colTelefonNumber2.Width = 99;
+            this.colTelefonNumber2.Width = 111;
             // 
             // colTelefonNumber3
             // 
@@ -657,7 +660,7 @@
             this.colTelefonNumber3.Name = "colTelefonNumber3";
             this.colTelefonNumber3.RowIndex = 1;
             this.colTelefonNumber3.Visible = true;
-            this.colTelefonNumber3.Width = 95;
+            this.colTelefonNumber3.Width = 106;
             // 
             // colEMail
             // 
@@ -666,19 +669,20 @@
             this.colEMail.Name = "colEMail";
             this.colEMail.RowIndex = 1;
             this.colEMail.Visible = true;
-            this.colEMail.Width = 99;
+            this.colEMail.Width = 111;
             // 
             // gridBand4
             // 
             this.gridBand4.Caption = "Verein";
             this.gridBand4.Columns.Add(this.colClassID);
             this.gridBand4.Columns.Add(this.colClass2ID);
+            this.gridBand4.Columns.Add(this.colAgeGroup);
             this.gridBand4.Columns.Add(this.colHealthInsuranceNumber);
             this.gridBand4.Columns.Add(this.colFunctions);
             this.gridBand4.Columns.Add(this.colDateOfClubEntry);
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.VisibleIndex = 3;
-            this.gridBand4.Width = 296;
+            this.gridBand4.Width = 416;
             // 
             // colClassID
             // 
@@ -687,7 +691,7 @@
             this.colClassID.FieldName = "ClassID";
             this.colClassID.Name = "colClassID";
             this.colClassID.Visible = true;
-            this.colClassID.Width = 87;
+            this.colClassID.Width = 97;
             // 
             // leClasses
             // 
@@ -714,7 +718,17 @@
             this.colClass2ID.FieldName = "Class2ID";
             this.colClass2ID.Name = "colClass2ID";
             this.colClass2ID.Visible = true;
-            this.colClass2ID.Width = 85;
+            this.colClass2ID.Width = 95;
+            // 
+            // colAgeGroup
+            // 
+            this.colAgeGroup.Caption = "Altersklasse";
+            this.colAgeGroup.FieldName = "colAgeGroup";
+            this.colAgeGroup.Name = "colAgeGroup";
+            this.colAgeGroup.OptionsColumn.AllowEdit = false;
+            this.colAgeGroup.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.colAgeGroup.Visible = true;
+            this.colAgeGroup.Width = 109;
             // 
             // colHealthInsuranceNumber
             // 
@@ -722,7 +736,7 @@
             this.colHealthInsuranceNumber.FieldName = "HealthInsuranceNumber";
             this.colHealthInsuranceNumber.Name = "colHealthInsuranceNumber";
             this.colHealthInsuranceNumber.Visible = true;
-            this.colHealthInsuranceNumber.Width = 124;
+            this.colHealthInsuranceNumber.Width = 115;
             // 
             // colFunctions
             // 
@@ -733,7 +747,7 @@
             this.colFunctions.RowIndex = 1;
             this.colFunctions.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.colFunctions.Visible = true;
-            this.colFunctions.Width = 172;
+            this.colFunctions.Width = 301;
             // 
             // ccbeFunctions
             // 
@@ -758,7 +772,7 @@
             this.colDateOfClubEntry.Name = "colDateOfClubEntry";
             this.colDateOfClubEntry.RowIndex = 1;
             this.colDateOfClubEntry.Visible = true;
-            this.colDateOfClubEntry.Width = 124;
+            this.colDateOfClubEntry.Width = 115;
             // 
             // gridBand5
             // 
@@ -766,7 +780,7 @@
             this.gridBand5.Columns.Add(this.colNote);
             this.gridBand5.Name = "gridBand5";
             this.gridBand5.VisibleIndex = 4;
-            this.gridBand5.Width = 84;
+            this.gridBand5.Width = 97;
             // 
             // colNote
             // 
@@ -775,7 +789,7 @@
             this.colNote.FieldName = "Note";
             this.colNote.Name = "colNote";
             this.colNote.Visible = true;
-            this.colNote.Width = 84;
+            this.colNote.Width = 97;
             // 
             // memoEditNote
             // 
@@ -801,7 +815,7 @@
             this.gridControlAdministration.MainView = this.gridViewAdministration;
             this.gridControlAdministration.MenuManager = this.ribbonControl;
             this.gridControlAdministration.Name = "gridControlAdministration";
-            this.gridControlAdministration.Size = new System.Drawing.Size(934, 336);
+            this.gridControlAdministration.Size = new System.Drawing.Size(1138, 336);
             this.gridControlAdministration.TabIndex = 4;
             this.gridControlAdministration.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAdministration});
@@ -859,11 +873,12 @@
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 488);
-            this.Controls.Add(this.gridControlAdministration);
+            this.ClientSize = new System.Drawing.Size(1138, 488);
             this.Controls.Add(this.gridControlCoreData);
+            this.Controls.Add(this.gridControlAdministration);
             this.Controls.Add(this.ribbonControl);
             this.HtmlImages = this.sharedImageCollection.ImageSource;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMember";
             this.Ribbon = this.ribbonControl;
             this.Text = "Mitgliederverwaltung";
@@ -948,11 +963,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colGender;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMemberFunctions;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colFunctions;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageFunctions;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.GridControl gridControlAdministration;
@@ -975,6 +985,12 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAddFunction;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupDeleteFunction;
         private System.Windows.Forms.BindingSource memberFunctionBindingSource;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colAgeGroup;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
     }
 }
 

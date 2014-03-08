@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMember));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.sharedImageCollection = new DevExpress.Utils.SharedImageCollection();
+            this.sharedImageCollection = new DevExpress.Utils.SharedImageCollection(this.components);
             this.btnAddMember = new DevExpress.XtraBars.BarButtonItem();
             this.btnDeleteMember = new DevExpress.XtraBars.BarButtonItem();
             this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -41,12 +42,14 @@
             this.btnDeleteClass = new DevExpress.XtraBars.BarButtonItem();
             this.btnAddFunction = new DevExpress.XtraBars.BarButtonItem();
             this.btnDeleteFunction = new DevExpress.XtraBars.BarButtonItem();
+            this.btnExportToPdf = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategoryCoreData = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPageCoreData = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAddMember = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupDeleteMember = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupCancelEdit = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupSaveChanges = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCategoryAdministration = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPageCities = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAddCity = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -57,9 +60,11 @@
             this.ribbonPageFunctions = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAddFunction = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupDeleteFunction = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.memberBindingSource = new System.Windows.Forms.BindingSource();
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridControlCoreData = new DevExpress.XtraGrid.GridControl();
             this.viewCoreData = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
+            this.gridBandCount = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colRowCount = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colLastName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -71,15 +76,15 @@
             this.colMemberFunctions = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colGenderID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.leGenders = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.genderBindingSource = new System.Windows.Forms.BindingSource();
+            this.genderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colDateOfBirth = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.deDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colStreet = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colPostCode = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colCityID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.leCities = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.cityBindingSource = new System.Windows.Forms.BindingSource();
-            this.colPostCode = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.cityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colTelefonNumber1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colTelefonNumber2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -88,19 +93,19 @@
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colClassID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.leClasses = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.classBindingSource = new System.Windows.Forms.BindingSource();
+            this.classBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colClass2ID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colAgeGroup = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colHealthInsuranceNumber = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colFunctions = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ccbeFunctions = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
-            this.functionBindingSource = new System.Windows.Forms.BindingSource();
+            this.functionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colDateOfClubEntry = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBandAdditional = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colNote = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.memoEditNote = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.gridControlAdministration = new DevExpress.XtraGrid.GridControl();
             this.gridViewAdministration = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIdAdmin = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -108,7 +113,8 @@
             this.colMembers = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.memberFunctionBindingSource = new System.Windows.Forms.BindingSource();
+            this.memberFunctionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.saveFileDialogXls = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection.ImageSource)).BeginInit();
@@ -148,9 +154,10 @@
             this.btnAddClass,
             this.btnDeleteClass,
             this.btnAddFunction,
-            this.btnDeleteFunction});
+            this.btnDeleteFunction,
+            this.btnExportToPdf});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 11;
+            this.ribbonControl.MaxItemId = 12;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategoryCoreData,
@@ -158,7 +165,7 @@
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1138, 152);
+            this.ribbonControl.Size = new System.Drawing.Size(921, 152);
             this.ribbonControl.SelectedPageChanging += new DevExpress.XtraBars.Ribbon.RibbonPageChangingEventHandler(this.ribbonControl_SelectedPageChanging);
             // 
             // sharedImageCollection
@@ -175,6 +182,7 @@
             this.sharedImageCollection.ImageSource.Images.SetKeyName(5, "doublefirst_32x32.png");
             this.sharedImageCollection.ImageSource.Images.SetKeyName(6, "apply_32x32.png");
             this.sharedImageCollection.ImageSource.Images.SetKeyName(7, "publicfix_32x32.png");
+            this.sharedImageCollection.ImageSource.Images.SetKeyName(8, "exporttoxls_32x32.png");
             this.sharedImageCollection.ParentControl = this;
             // 
             // btnAddMember
@@ -257,6 +265,14 @@
             this.btnDeleteFunction.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnDeleteFunction.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ribbon_ItemClick);
             // 
+            // btnExportToPdf
+            // 
+            this.btnExportToPdf.Id = 11;
+            this.btnExportToPdf.ImageIndex = 8;
+            this.btnExportToPdf.Name = "btnExportToPdf";
+            this.btnExportToPdf.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnExportToPdf.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportToPdf_ItemClick);
+            // 
             // ribbonPageCategoryCoreData
             // 
             this.ribbonPageCategoryCoreData.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -271,7 +287,8 @@
             this.ribbonPageGroupAddMember,
             this.ribbonPageGroupDeleteMember,
             this.ribbonPageGroupCancelEdit,
-            this.ribbonPageGroupSaveChanges});
+            this.ribbonPageGroupSaveChanges,
+            this.ribbonPageGroup1});
             this.ribbonPageCoreData.ImageIndex = 1;
             this.ribbonPageCoreData.Name = "ribbonPageCoreData";
             this.ribbonPageCoreData.Text = "Stammdaten";
@@ -303,6 +320,13 @@
             this.ribbonPageGroupSaveChanges.Name = "ribbonPageGroupSaveChanges";
             this.ribbonPageGroupSaveChanges.ShowCaptionButton = false;
             this.ribbonPageGroupSaveChanges.Text = "Änderungen speichern";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnExportToPdf);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.ShowCaptionButton = false;
+            this.ribbonPageGroup1.Text = "Exportieren";
             // 
             // ribbonPageCategoryAdministration
             // 
@@ -402,7 +426,7 @@
             this.deDate,
             this.ccbeFunctions,
             this.memoEditNote});
-            this.gridControlCoreData.Size = new System.Drawing.Size(1138, 336);
+            this.gridControlCoreData.Size = new System.Drawing.Size(921, 336);
             this.gridControlCoreData.TabIndex = 2;
             this.gridControlCoreData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewCoreData,
@@ -411,11 +435,12 @@
             // viewCoreData
             // 
             this.viewCoreData.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBandCount,
             this.gridBand1,
             this.gridBand2,
             this.gridBand3,
             this.gridBand4,
-            this.gridBand5});
+            this.gridBandAdditional});
             this.viewCoreData.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.colID,
             this.colLastName,
@@ -440,13 +465,37 @@
             this.colGender,
             this.colMemberFunctions,
             this.colFunctions,
-            this.colAgeGroup});
+            this.colAgeGroup,
+            this.colRowCount});
             this.viewCoreData.GridControl = this.gridControlCoreData;
             this.viewCoreData.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "", null, "")});
             this.viewCoreData.Name = "viewCoreData";
+            this.viewCoreData.OptionsPrint.AutoWidth = false;
+            this.viewCoreData.OptionsPrint.ExpandAllDetails = true;
+            this.viewCoreData.OptionsPrint.PrintBandHeader = false;
+            this.viewCoreData.OptionsPrint.PrintHorzLines = false;
+            this.viewCoreData.OptionsPrint.PrintVertLines = false;
             this.viewCoreData.OptionsView.ColumnAutoWidth = true;
             this.viewCoreData.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.view_CustomUnboundColumnData);
+            // 
+            // gridBandCount
+            // 
+            this.gridBandCount.Caption = "Count";
+            this.gridBandCount.Columns.Add(this.colRowCount);
+            this.gridBandCount.Name = "gridBandCount";
+            this.gridBandCount.Visible = false;
+            this.gridBandCount.VisibleIndex = -1;
+            this.gridBandCount.Width = 75;
+            // 
+            // colRowCount
+            // 
+            this.colRowCount.Caption = "Nr";
+            this.colRowCount.FieldName = "colRowCount";
+            this.colRowCount.Name = "colRowCount";
+            this.colRowCount.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.colRowCount.Visible = true;
+            this.colRowCount.Width = 30;
             // 
             // gridBand1
             // 
@@ -463,7 +512,7 @@
             this.gridBand1.Columns.Add(this.colDateOfBirth);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 187;
+            this.gridBand1.Width = 156;
             // 
             // colID
             // 
@@ -477,7 +526,6 @@
             this.colLastName.FieldName = "LastName";
             this.colLastName.Name = "colLastName";
             this.colLastName.Visible = true;
-            this.colLastName.Width = 92;
             // 
             // colForeName
             // 
@@ -485,7 +533,7 @@
             this.colForeName.FieldName = "ForeName";
             this.colForeName.Name = "colForeName";
             this.colForeName.Visible = true;
-            this.colForeName.Width = 95;
+            this.colForeName.Width = 81;
             // 
             // colCity
             // 
@@ -525,17 +573,17 @@
             this.colGenderID.Name = "colGenderID";
             this.colGenderID.RowIndex = 1;
             this.colGenderID.Visible = true;
-            this.colGenderID.Width = 92;
             // 
             // leGenders
             // 
+            this.leGenders.AccessibleDescription = "";
             this.leGenders.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.leGenders.AutoHeight = false;
             this.leGenders.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.leGenders.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 34, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description", "Description", 63, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Description", "Leeren: Strg + Entf", 63, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Members", "Members", 53, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near)});
             this.leGenders.DataSource = this.genderBindingSource;
             this.leGenders.DisplayMember = "Description";
@@ -556,7 +604,7 @@
             this.colDateOfBirth.Name = "colDateOfBirth";
             this.colDateOfBirth.RowIndex = 1;
             this.colDateOfBirth.Visible = true;
-            this.colDateOfBirth.Width = 95;
+            this.colDateOfBirth.Width = 81;
             // 
             // deDate
             // 
@@ -573,11 +621,11 @@
             // 
             this.gridBand2.Caption = "Wohnsitz";
             this.gridBand2.Columns.Add(this.colStreet);
-            this.gridBand2.Columns.Add(this.colCityID);
             this.gridBand2.Columns.Add(this.colPostCode);
+            this.gridBand2.Columns.Add(this.colCityID);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 200;
+            this.gridBand2.Width = 144;
             // 
             // colStreet
             // 
@@ -585,7 +633,16 @@
             this.colStreet.FieldName = "Street";
             this.colStreet.Name = "colStreet";
             this.colStreet.Visible = true;
-            this.colStreet.Width = 200;
+            this.colStreet.Width = 144;
+            // 
+            // colPostCode
+            // 
+            this.colPostCode.Caption = "PLZ";
+            this.colPostCode.FieldName = "PostCode";
+            this.colPostCode.Name = "colPostCode";
+            this.colPostCode.RowIndex = 1;
+            this.colPostCode.Visible = true;
+            this.colPostCode.Width = 40;
             // 
             // colCityID
             // 
@@ -595,7 +652,7 @@
             this.colCityID.Name = "colCityID";
             this.colCityID.RowIndex = 1;
             this.colCityID.Visible = true;
-            this.colCityID.Width = 136;
+            this.colCityID.Width = 104;
             // 
             // leCities
             // 
@@ -617,15 +674,6 @@
             // 
             this.cityBindingSource.DataSource = typeof(Mitgliederverwaltung.Database.City);
             // 
-            // colPostCode
-            // 
-            this.colPostCode.Caption = "PLZ";
-            this.colPostCode.FieldName = "PostCode";
-            this.colPostCode.Name = "colPostCode";
-            this.colPostCode.RowIndex = 1;
-            this.colPostCode.Visible = true;
-            this.colPostCode.Width = 64;
-            // 
             // gridBand3
             // 
             this.gridBand3.Caption = "Kontakt";
@@ -635,7 +683,7 @@
             this.gridBand3.Columns.Add(this.colEMail);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 217;
+            this.gridBand3.Width = 189;
             // 
             // colTelefonNumber1
             // 
@@ -643,7 +691,7 @@
             this.colTelefonNumber1.FieldName = "TelefonNumber1";
             this.colTelefonNumber1.Name = "colTelefonNumber1";
             this.colTelefonNumber1.Visible = true;
-            this.colTelefonNumber1.Width = 106;
+            this.colTelefonNumber1.Width = 100;
             // 
             // colTelefonNumber2
             // 
@@ -651,7 +699,7 @@
             this.colTelefonNumber2.FieldName = "TelefonNumber2";
             this.colTelefonNumber2.Name = "colTelefonNumber2";
             this.colTelefonNumber2.Visible = true;
-            this.colTelefonNumber2.Width = 111;
+            this.colTelefonNumber2.Width = 89;
             // 
             // colTelefonNumber3
             // 
@@ -660,7 +708,7 @@
             this.colTelefonNumber3.Name = "colTelefonNumber3";
             this.colTelefonNumber3.RowIndex = 1;
             this.colTelefonNumber3.Visible = true;
-            this.colTelefonNumber3.Width = 106;
+            this.colTelefonNumber3.Width = 100;
             // 
             // colEMail
             // 
@@ -669,7 +717,7 @@
             this.colEMail.Name = "colEMail";
             this.colEMail.RowIndex = 1;
             this.colEMail.Visible = true;
-            this.colEMail.Width = 111;
+            this.colEMail.Width = 89;
             // 
             // gridBand4
             // 
@@ -682,7 +730,7 @@
             this.gridBand4.Columns.Add(this.colDateOfClubEntry);
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.VisibleIndex = 3;
-            this.gridBand4.Width = 416;
+            this.gridBand4.Width = 366;
             // 
             // colClassID
             // 
@@ -691,7 +739,7 @@
             this.colClassID.FieldName = "ClassID";
             this.colClassID.Name = "colClassID";
             this.colClassID.Visible = true;
-            this.colClassID.Width = 97;
+            this.colClassID.Width = 85;
             // 
             // leClasses
             // 
@@ -718,7 +766,7 @@
             this.colClass2ID.FieldName = "Class2ID";
             this.colClass2ID.Name = "colClass2ID";
             this.colClass2ID.Visible = true;
-            this.colClass2ID.Width = 95;
+            this.colClass2ID.Width = 85;
             // 
             // colAgeGroup
             // 
@@ -728,15 +776,15 @@
             this.colAgeGroup.OptionsColumn.AllowEdit = false;
             this.colAgeGroup.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.colAgeGroup.Visible = true;
-            this.colAgeGroup.Width = 109;
+            this.colAgeGroup.Width = 86;
             // 
             // colHealthInsuranceNumber
             // 
-            this.colHealthInsuranceNumber.Caption = "Krankenversicherung";
+            this.colHealthInsuranceNumber.Caption = "Krankvers.-Nr.";
             this.colHealthInsuranceNumber.FieldName = "HealthInsuranceNumber";
             this.colHealthInsuranceNumber.Name = "colHealthInsuranceNumber";
             this.colHealthInsuranceNumber.Visible = true;
-            this.colHealthInsuranceNumber.Width = 115;
+            this.colHealthInsuranceNumber.Width = 110;
             // 
             // colFunctions
             // 
@@ -747,7 +795,7 @@
             this.colFunctions.RowIndex = 1;
             this.colFunctions.UnboundType = DevExpress.Data.UnboundColumnType.String;
             this.colFunctions.Visible = true;
-            this.colFunctions.Width = 301;
+            this.colFunctions.Width = 256;
             // 
             // ccbeFunctions
             // 
@@ -767,20 +815,21 @@
             // 
             // colDateOfClubEntry
             // 
+            this.colDateOfClubEntry.Caption = "Eintrittsdatum";
             this.colDateOfClubEntry.ColumnEdit = this.deDate;
             this.colDateOfClubEntry.FieldName = "DateOfClubEntry";
             this.colDateOfClubEntry.Name = "colDateOfClubEntry";
             this.colDateOfClubEntry.RowIndex = 1;
             this.colDateOfClubEntry.Visible = true;
-            this.colDateOfClubEntry.Width = 115;
+            this.colDateOfClubEntry.Width = 110;
             // 
-            // gridBand5
+            // gridBandAdditional
             // 
-            this.gridBand5.Caption = "Zusatz";
-            this.gridBand5.Columns.Add(this.colNote);
-            this.gridBand5.Name = "gridBand5";
-            this.gridBand5.VisibleIndex = 4;
-            this.gridBand5.Width = 97;
+            this.gridBandAdditional.Caption = "Zusatz";
+            this.gridBandAdditional.Columns.Add(this.colNote);
+            this.gridBandAdditional.Name = "gridBandAdditional";
+            this.gridBandAdditional.VisibleIndex = 4;
+            this.gridBandAdditional.Width = 45;
             // 
             // colNote
             // 
@@ -789,7 +838,7 @@
             this.colNote.FieldName = "Note";
             this.colNote.Name = "colNote";
             this.colNote.Visible = true;
-            this.colNote.Width = 97;
+            this.colNote.Width = 45;
             // 
             // memoEditNote
             // 
@@ -815,7 +864,7 @@
             this.gridControlAdministration.MainView = this.gridViewAdministration;
             this.gridControlAdministration.MenuManager = this.ribbonControl;
             this.gridControlAdministration.Name = "gridControlAdministration";
-            this.gridControlAdministration.Size = new System.Drawing.Size(1138, 336);
+            this.gridControlAdministration.Size = new System.Drawing.Size(921, 336);
             this.gridControlAdministration.TabIndex = 4;
             this.gridControlAdministration.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAdministration});
@@ -868,12 +917,18 @@
             // 
             this.memberFunctionBindingSource.DataSource = typeof(Mitgliederverwaltung.Database.MemberFunction);
             // 
+            // saveFileDialogXls
+            // 
+            this.saveFileDialogXls.FileName = "Mitgliederdaten";
+            this.saveFileDialogXls.Filter = "Excel-Dateien (*.xls)|*.xls";
+            this.saveFileDialogXls.RestoreDirectory = true;
+            // 
             // FormMember
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1138, 488);
+            this.ClientSize = new System.Drawing.Size(921, 488);
             this.Controls.Add(this.gridControlCoreData);
             this.Controls.Add(this.gridControlAdministration);
             this.Controls.Add(this.ribbonControl);
@@ -985,12 +1040,17 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAddFunction;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupDeleteFunction;
         private System.Windows.Forms.BindingSource memberFunctionBindingSource;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colAgeGroup;
+        private DevExpress.XtraBars.BarButtonItem btnExportToPdf;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colRowCount;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandCount;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colAgeGroup;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandAdditional;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogXls;
     }
 }
 

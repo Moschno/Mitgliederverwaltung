@@ -10,12 +10,15 @@ using DevExpress.XtraEditors;
 using Mitgliederverwaltung.Database;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Repository;
 
 namespace Mitgliederverwaltung {
     public partial class FormMember : DevExpress.XtraBars.Ribbon.RibbonForm {
         private MitgliederverwaltungTestdatenDbContext dbContext;
         private List<object> colFunctionsCellValues = new List<object>();
         private string colFuntionsIdSeperator = ", ";
+        private bool showEmptyColDisplayText = true;
 
         public FormMember() {
             InitializeComponent();
@@ -27,6 +30,14 @@ namespace Mitgliederverwaltung {
             classBindingSource.DataSource = dbContext.Classes.ToList<Class>();
             functionBindingSource.DataSource = dbContext.Functions.ToList<Function>();
             memberFunctionBindingSource.DataSource = dbContext.MemberFunctions.ToList<MemberFunction>();
+
+            List<LookUpColumnInfo> leInfos = new List<LookUpColumnInfo>();
+            leInfos.Add(leCities.Columns.GetVisibleColumn(0));
+            leInfos.Add(leGenders.Columns.GetVisibleColumn(0));
+            leInfos.Add(leClasses.Columns.GetVisibleColumn(0));
+            foreach (LookUpColumnInfo leInfo in leInfos) {
+                leInfo.Caption = "Leeren mit Strg + Entf";
+            }
 
             foreach (Member member in dbContext.Members.Local.ToList<Member>()) {
                 StringBuilder functions;
@@ -343,6 +354,9 @@ namespace Mitgliederverwaltung {
                 else if (e.Column == colAgeGroup) {
                     e.Value = GetAgeGroup(e.ListSourceRowIndex);
                 }
+                else if (e.Column == colRowCount) {
+                    e.Value = (e.ListSourceRowIndex + 1).ToString();
+                }
             }
         }
 
@@ -350,28 +364,28 @@ namespace Mitgliederverwaltung {
             DateTime dateOfBirth = Convert.ToDateTime(viewCoreData.GetListSourceRowCellValue(listSourceRowIndex, colDateOfBirth));
             int age = GetAgeFromDate(dateOfBirth);
             if (age >= 0 && age <= 6) {
-                return "AK I - bis 6 Jahre";
+                return "AK I (< 7)";
             }
             else if (age >= 7 && age <= 14) {
-                return "AK II - 7-14 Jahre";
+                return "AK II (7-14)";
             }
             else if (age >= 15 && age <= 18) {
-                return "AK III - 15-18 Jahre";
+                return "AK III (15-18)";
             }
             else if (age >= 19 && age <= 26) {
-                return "AK IV - 19-26 Jahre";
+                return "AK IV (19-26)";
             }
             else if (age >= 27 && age <= 40) {
-                return "AK V - 27-40 Jahre";
+                return "AK V (27-40)";
             }
             else if (age >= 41 && age <= 50) {
-                return "AK VI - 41-50 Jahre";
+                return "AK VI (41-50)";
             }
             else if (age >= 51 && age <= 60) {
-                return "AK VII - 51-60 Jahre";
+                return "AK VII (51-60)";
             }
             else if (age >= 61) {
-                return "AK VIII - über 60 Jahre";
+                return "AK VIII (> 60)";
             }
             else {
                 return "";
@@ -391,30 +405,32 @@ namespace Mitgliederverwaltung {
         }
 
         private void Repository_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e) {
-            if (sender == deDate) {
-                if (string.IsNullOrEmpty(e.DisplayText)) {
-                    e.DisplayText = "<Bitte Datum wählen>";
+            if (showEmptyColDisplayText) {
+                if (sender == deDate) {
+                    if (string.IsNullOrEmpty(e.DisplayText)) {
+                        e.DisplayText = "<Datum wählen>";
+                    }
                 }
-            }
-            else if (sender == leGenders) {
-                if (string.IsNullOrEmpty(e.DisplayText)) {
-                    e.DisplayText = "<Bitte Geschlecht wählen>";
+                else if (sender == leGenders) {
+                    if (string.IsNullOrEmpty(e.DisplayText)) {
+                        e.DisplayText = "<Geschlecht wählen>";
+                    }
                 }
-            }
-            else if (sender == leCities) {
-                if (string.IsNullOrEmpty(e.DisplayText)) {
-                    e.DisplayText = "<Bitte Stadt wählen>";
+                else if (sender == leCities) {
+                    if (string.IsNullOrEmpty(e.DisplayText)) {
+                        e.DisplayText = "<Stadt wählen>";
+                    }
                 }
-            }
-            else if (sender == leClasses) {
-                if (string.IsNullOrEmpty(e.DisplayText)) {
-                    e.DisplayText = "<Bitte Klasse wählen>";
+                else if (sender == leClasses) {
+                    if (string.IsNullOrEmpty(e.DisplayText)) {
+                        e.DisplayText = "<Klasse wählen>";
+                    }
                 }
-            }
-            else if (sender == ccbeFunctions) {
-                if (string.IsNullOrEmpty(e.DisplayText)) {
-                    e.DisplayText = "<Bitte Funktion(en) wählen>";
-                }
+                else if (sender == ccbeFunctions) {
+                    if (string.IsNullOrEmpty(e.DisplayText)) {
+                        e.DisplayText = "<Funktion(en) wählen>";
+                    }
+                } 
             }
         }
 
@@ -471,6 +487,25 @@ namespace Mitgliederverwaltung {
                     colName.FieldName = "Description";
                 }
                 gridControlAdministration.EndUpdate();
+            }
+        }
+
+        private void btnExportToPdf_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            if (viewCoreData != null) {
+                if (saveFileDialogXls.ShowDialog() == DialogResult.OK) {
+                    showEmptyColDisplayText = false;
+                    gridBandCount.Visible = true;
+                    gridBandAdditional.Visible = false;
+
+		            viewCoreData.ExportToXls(saveFileDialogXls.FileName, new DevExpress.XtraPrinting.XlsExportOptions {
+                        TextExportMode = DevExpress.XtraPrinting.TextExportMode.Text
+                        }
+                    );
+
+                    showEmptyColDisplayText = true;
+                    gridBandCount.Visible = false;
+                    gridBandAdditional.Visible = true;
+	            }
             }
         }
     }
